@@ -42,6 +42,7 @@
 	
 </head>
 <body class="hold-transition login-page">
+<div class="wrapper">
 <div class="login-box">
   <div class="login-logo">
     <a href="#"><b>Admin</b>LORA</a>
@@ -83,6 +84,7 @@
 
   </div>
   <!-- /.login-box-body -->
+</div>
 </div>
 <!-- /.login-box -->
 

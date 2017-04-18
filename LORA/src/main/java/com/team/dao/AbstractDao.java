@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class AbstractDao {
 	
 
-    @PersistenceContext(unitName="mightyPU")
+    @PersistenceContext(unitName="projectPU")
 	private EntityManager entityManager;
 	
 	@Autowired
