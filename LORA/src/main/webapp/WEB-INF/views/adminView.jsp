@@ -153,7 +153,7 @@
 				</span>
 			</a>
 			<ul class="treeview-menu">
-				<li><a href="/reports"><i class="fa fa-circle-o"></i><b>Water Consumption</b></a></li>
+				<li><a href="reports"><i class="fa fa-circle-o"></i><b>Water Consumption</b></a></li>
 			</ul>
         </li>
 		 <li class="treeview">
@@ -347,7 +347,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer text-center">
-	<strong >Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Unizen Technologies</a>.</strong> All rights
+	<strong >Copyright &copy; 2014-2016 <a href="http://www.unizentechnologies.com/">Unizen Technologies</a>.</strong> All rights
 		reserved.
   </footer>
 

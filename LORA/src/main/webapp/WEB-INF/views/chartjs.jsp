@@ -272,7 +272,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-			<img src="../../dist/img/user_icon.png" class="img-circle" alt="User Image">        
+			<img src="images/user_icon.png" class="img-circle" alt="User Image">        
 		</div>
         <div class="pull-left info">
           <p>Welcome Unizen</p>
@@ -323,7 +323,7 @@
 				</span>
 			</a>
 			<ul class="treeview-menu">
-				<li><a href="/reports"><i class="fa fa-circle-o"></i><b>Water Consumption</b></a></li>
+				<li><a href="reports"><i class="fa fa-circle-o"></i><b>Water Consumption</b></a></li>
 			</ul>
         </li>
 		 <li class="treeview">
@@ -440,12 +440,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer text-center">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
-    </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://www.unizentechnologies.com">Unizen Technologies</a>.</strong> All rights
-    reserved.
+   <footer class="main-footer text-center">
+	<strong >Copyright &copy; 2014-2016 <a href="http://www.unizentechnologies.com/">Unizen Technologies</a>.</strong> All rights
+		reserved.
   </footer>
 
   <!-- Control Sidebar -->
