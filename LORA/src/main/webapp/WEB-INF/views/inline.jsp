@@ -256,7 +256,7 @@
 
   <header class="main-header " >
     <!-- Logo -->
-    <a href="#" class="logo">
+    <a href="#" class="logo affix">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LR</span>
       <!-- logo for regular state and mobile devices -->
@@ -273,7 +273,7 @@
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-   <aside class="main-sidebar">
+   <aside class="main-sidebar" style="position:fixed;">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
@@ -350,14 +350,22 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1 class="text-center text-blue">
-        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Charts
-      </h1>
+      <h3 class="text-center text-blue">
+       <b>Charts</b>
+      </h3>
     </section>
 
     <!-- Main content -->
     <section class="content">
-
+    
+						<div class="list-group text-center">
+						   <button class=" btn btn-sm btn-primary select-box"><b>Rajhasthan &nbsp;<span class="caret"></b></span></button>
+						   <button class=" btn btn-sm btn-primary"><b>Gandhinagar &nbsp;<span class="caret"></b></span></button>
+						   <button class=" btn btn-sm btn-primary"><b>Building 1 &nbsp;<span class="caret"></b></span></button>
+						   <button id="datepicker" class=" btn btn-sm btn-primary"><b>FromDate &nbsp;<span class="caret"></b></span></button>
+						   <button class=" btn btn-sm btn-primary "><b>ToDate &nbsp;<span class="caret"></b></span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						   <button class=" btn btn-sm btn-primary text-black"><b>Submit &nbsp;</b></span></button>
+			  	  		</div>
       <!-- row -->
       <div class="row">
         <div class="col-xs-12">

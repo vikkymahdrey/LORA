@@ -171,11 +171,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
        
-	  <h1 class="text-center text-blue"><b>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dashboard
+	  <h3 class="text-center text-blue"><b>
+        Dashboard
         </b>
-		
-      </h1>
+	  </h3>
 	
 		
 	</section>
@@ -185,6 +184,14 @@
       <!-- Info boxes -->
       
       <!-- /.row -->
+       					<div class="list-group text-center">
+						   <button class=" btn btn-sm btn-primary select-box"><b>Rajhasthan &nbsp;<span class="caret"></b></span></button>
+						   <button class=" btn btn-sm btn-primary"><b>Gandhinagar &nbsp;<span class="caret"></b></span></button>
+						   <button class=" btn btn-sm btn-primary"><b>Building 1 &nbsp;<span class="caret"></b></span></button>
+						   <button id="datepicker" class=" btn btn-sm btn-primary"><b>FromDate &nbsp;<span class="caret"></b></span></button>
+						   <button class=" btn btn-sm btn-primary "><b>ToDate &nbsp;<span class="caret"></b></span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						   <button class=" btn btn-sm btn-primary text-black"><b>Submit &nbsp;</b></span></button>
+			  	  		</div>
 
       <div class="row">
         <div class="col-md-12">
