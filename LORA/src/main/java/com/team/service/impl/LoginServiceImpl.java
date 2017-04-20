@@ -3,9 +3,8 @@ package com.team.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.team.dao.AdminDao;
 import com.team.dao.LoginDao;
-import com.team.domain.AdminUser;
+import com.team.domain.User;
 import com.team.service.LoginService;
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -13,27 +12,26 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private LoginDao loginDao;
 	
-	@Autowired
-	private AdminDao adminDao;
 	
-	public AdminUser getLoginUser(String username, String password)	throws Exception {
+	
+	public User getLoginUser(String username, String password)	throws Exception {
 		
 		return loginDao.getLoginUser(username,password);
 	}
 
-		public AdminUser getUserByEmail(String email) throws Exception {
+		public User getUserByEmail(String email) throws Exception {
 			return loginDao.getUserByEmail(email);
 	}
 
 			
-		public String getPasswordResetMessage(AdminUser admin) throws Exception {
+		public String getPasswordResetMessage(User user) throws Exception {
 			return "Hi "
-					+admin.getDisplayname()				
+					+user.getDisplayname()				
 					+",<br/><br/>Your Password has been reset. To access Mighty use the below information.<br/><br/> "
 					+ ".<br/><br/>"
 					+"Link - <a href='http://mighty2.cloudaccess.host/MightyCloud/'>Mighty</a>"
-					+"<br/><br/>Login Id - "+admin.getLoginId()
-					+"<br/><br/>Password - "+admin.getPassword()
+					+"<br/><br/>Login Id - "+user.getLoginId()
+					+"<br/><br/>Password - "+user.getPassword()
 					+"<br/><br/>Regards,<br/>" 
 					+ "<a href='http://mighty2.cloudaccess.host/MightyCloud/'>http://mighty2.cloudaccess.host/MightyCloud/</a>\n"
 							+" Mighty Team."
@@ -43,12 +41,12 @@ public class LoginServiceImpl implements LoginService {
 		}
 
 	
-		public AdminUser setGeneratedPwd(AdminUser adminUser) throws Exception {
+		/*public AdminUser setGeneratedPwd(AdminUser adminUser) throws Exception {
 			return (AdminUser)adminDao.save(adminUser);
-		}
+		}*/
 
 	
-		public AdminUser getUserById(String id) throws Exception {
+		public User getUserById(String id) throws Exception {
 			return loginDao.getUserById(id);
 		}
 

@@ -1,3 +1,14 @@
+<%--
+    Document   : device_firmware
+    Created on : April 15, 2017, 03:51:01 PM
+    Author     : Vikky
+--%>
+
+
+<%@page import="com.team.domain.*"%>
+<%@page import="com.itextpdf.text.log.SysoLogger"%>
+<%@page import="java.util.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,8 +50,10 @@
 <script src="js/demo.js"></script>
 <!-- <script src="js/scroller.js"></script> -->
   
-</head>
+</head>	
 <body class="hold-transition skin-blue sidebar-mini">
+	<% List<Waterconsumption> waterConsumed=(List<Waterconsumption>)request.getAttribute("WaterConsumedList"); %>
+
 <div class="wrapper">
 
   <header class="main-header" style="position: fixed;">
@@ -122,7 +135,7 @@
 			</ul>
         </li>
 		<li class="treeview">
-          <a href="#">
+          <a href="logout">
             <i class="fa fa-sign-out"></i> <span><b>Sign-Out</b></span>
            
           </a>
@@ -155,7 +168,7 @@
 						   <button class=" btn btn-sm btn-primary "><b>ToDate &nbsp;<span class="caret"></b></span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						   <button class=" btn btn-sm btn-primary text-black"><b>Submit &nbsp;</b></span></button>
 			  	  		</div>
-    				    
+    				   
 				    	<div class="row">
 							<div class="col-sm-12">	
 								<table class="table table-hover text-center">
@@ -163,174 +176,42 @@
 								      <tr class="text-blue text-semi-bold">
 								        <th>ID</th>
 								        <th>Branch</th>
-								        <th>Reservoir</th>
-										<th>Circle</th>
+								        <th>Site</th>
+										<th>Area</th>
+										<th>Place</th>
+										<th>Date</th>
+										<th>WaterConsumed</th>
 										<th>Overflow_quantity</th>
 										<th>Leakage_quantity</th>
-										<th>Insufficient_filling_count</th>
-										<th>Insufficient_distribution_count</th>
-										<th>Water_in_litres</th>
+										<th>LaterDistribution</th>
+										<th>EarlyDistribution</th>
+										
 								      </tr>
 								    </thead>
 								    <tbody>
-								      <tr>
-								        <td>011</td>
-								        <td>Rajhasthan</td>
-								        <td>GandhiNagar</td>
-										<td>Building 1</td>
-										<td>50</td>
-										<td>10</td>
-										<td>2</td>
-										<td>10</td>
-										<td>100</td>
-								      </tr>
-								      <tr>
-								        <td>012</td>
-								        <td>Rajhasthan</td>
-								        <td>GandhiNagar_stage_2</td>
-										<td>Building_2</td>
-										<td>20</td>
-										<td>20</td>
-										<td>4</td>
-										<td>40</td>
-										<td>400</td>
-								      </tr>
-								       <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
-									    <tr>
-								        <td>013</td>
-								        <td>Rajhasthan</td>
-								        <td>BSNL office</td>
-										<td>Building_3</td>
-										<td>40</td>
-										<td>35</td>
-										<td>40</td>
-										<td>15</td>
-										<td>300</td>
-								      </tr>
+								     <%if(waterConsumed!=null && !waterConsumed.isEmpty()){
+    				    					for(Waterconsumption wc: waterConsumed){ %>
+    				    						<tr>
+		    				    					<td><%=wc.getId()%></td>
+		    				    					<td><%=wc.getSite().getBranch().getLocation()%></td>
+		    				    					<td><%=wc.getSite().getSiteName()%></td>
+		    				    					<td><%=wc.getPlace().getArea().getAreaName()%></td>
+		    				    					<td><%=wc.getPlace().getPlaceName()%></td>
+		    				    					<td><%=wc.getDate()%></td>
+		    				    					<td><%=wc.getWaterconsumed()%></td>
+		    				    					<td><%=wc.getOverflowQuantity()%></td>
+		    				    					<td><%=wc.getLeakageQuantity()%></td>
+		    				    					<td><%=wc.getLaterDistribution()%></td>
+		    				    					<td><%=wc.getEarlyDistribution()%></td>
+	    				        				</tr>
+								      
+											<%}
+    				   				   }%>	
 								    </tbody>
 								  </table>
 								</div>  
 							</div> 
+							
 			 </div> 
 			 <!-- Box end here -->
 		</div>

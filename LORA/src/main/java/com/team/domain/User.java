@@ -1,24 +1,24 @@
 package com.team.domain;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 
 /**
- * The persistent class for the admin_user database table.
+ * The persistent class for the users database table.
  * 
  */
 @Entity
-@Table(name="admin_user")
-@NamedQuery(name="AdminUser.findAll", query="SELECT a FROM AdminUser a")
-public class AdminUser implements Serializable {
+@Table(name="users")
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private String id;
 
 	private String active;
 
@@ -34,30 +34,32 @@ public class AdminUser implements Serializable {
 
 	private String gender;
 
-	
-
 	private String lastname;
 
 	private String loginId;
 
 	private String password;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date pwdChangedDate;
+
+	//bi-directional many-to-one association to Device
+	@OneToMany(mappedBy="user")
+	private List<Device> devices;
 
 	//bi-directional many-to-one association to Role
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="roleId")
 	private Role role;
 
-	public AdminUser() {
+	public User() {
 	}
 
-	public int getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -141,6 +143,36 @@ public class AdminUser implements Serializable {
 		this.password = password;
 	}
 
+	public Date getPwdChangedDate() {
+		return this.pwdChangedDate;
+	}
+
+	public void setPwdChangedDate(Date pwdChangedDate) {
+		this.pwdChangedDate = pwdChangedDate;
+	}
+
+	public List<Device> getDevices() {
+		return this.devices;
+	}
+
+	public void setDevices(List<Device> devices) {
+		this.devices = devices;
+	}
+
+	public Device addDevice(Device device) {
+		getDevices().add(device);
+		device.setUser(this);
+
+		return device;
+	}
+
+	public Device removeDevice(Device device) {
+		getDevices().remove(device);
+		device.setUser(null);
+
+		return device;
+	}
+
 	public Role getRole() {
 		return this.role;
 	}
@@ -148,11 +180,5 @@ public class AdminUser implements Serializable {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public Date getPwdChangedDate() {
-		return pwdChangedDate;
-	}
 
-	public void setPwdChangedDate(Date pwdChangedDate) {
-		this.pwdChangedDate = pwdChangedDate;
-	}
 }

@@ -40,9 +40,85 @@
 	  });
 	</script>
 	
+	<script  type="text/javascript">
+function browserIdentity()
+{
+	if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){ //test for MSIE x.x;
+		 var ieversion=new Number(RegExp.$1) // capture x.x portion and store as a number
+		  
+		   if (ieversion<=7)
+		 	 alert("You are using older version of Internet Explorer. Please upgrade your browser.");
+		 
+}
+}
+ $(document).ready(function() {
+	$( "#uname" ).click(function() {
+		var passvalid= document.getElementById("sts").value;
+		
+		if(passvalid=="" || passvalid=="null"){
+			return true;
+		}else{
+			window.location.reload();
+		}
+			
+		});
+	}); 
+
+function validate() {
+	var uname = document.getElementById("uname").value;
+	var password = document.getElementById("pass").value;
+	document.getElementById("namevalid").innerHTML = "";
+	document.getElementById("passvalid").innerHTML = "";
+	var passvalid= document.getElementById("sts").value;
+	
+	if(passvalid!="" && passvalid!="null"){
+		window.location.reload();
+		return false;
+	}else if (uname.length < 1) {
+		document.getElementById("namevalid").innerHTML = "Please enter user name!";
+		document.getElementById("uname").focus(); 
+		return false;
+	}else if (password.length < 1) {
+		document.getElementById("passvalid").innerHTML = "Please enter password!";
+		document.getElementById("pass").focus(); 
+		return false;
+	}  else{
+		return true;
+	}
+	
+}
+</script>
+   
+	
+	
 </head>
 <body class="hold-transition login-page">
 <div class="wrapper">
+<%
+						response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+						response.setHeader("Pragma", "co-cache");
+						response.setDateHeader("Expires", 0);
+  
+						String message="";
+						
+						try{
+							message=request.getParameter("message");
+							if(message!=null&&!message.equals(""))
+											{
+							}
+							else{						
+									message = "";
+									message = request.getAttribute("status").toString();
+									session.setAttribute("status", "");
+								}
+				
+							}catch(Exception e)
+							{
+								;
+							}
+					
+					%>	
+
 <div class="login-box">
   <div class="login-logo">
     <a href="#"><b>Admin</b>LORA</a>
@@ -51,29 +127,39 @@
   <div class="login-box-body">
     <p class="login-box-msg"><b>Please Sign-in</b></p>
 
-    <form action="#" method="post">
-      <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck " style="margin-left:9.5%;">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
-        <!-- /.col -->
-      </div>
+    <form action="login" name="user_validation_form" id="user_validation_form" method="post" onsubmit="return validate()">
+    
+			      <div class="form-group has-feedback">
+			      	<input type="text" name="uname" id="uname" class="form-control" placeholder="Username"/>
+			      	<span class="glyphicon glyphicon-user form-control-feedback"></span>
+			        <span id="namevalid" style="color: red;"></span>
+			      </div>
+			      
+			      <div class="form-group has-feedback">
+			        <input type="password" name="pass" id="pass" class="form-control" placeholder="Password">
+			        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+			        <span id="passvalid" style="color: red;"></span>
+			        
+			        <span id="passvalid" style="color: red;" ><%=message %></span>
+					<input type="hidden" name="sts" id="sts" value="<%=(String)request.getAttribute("status")%>">
+			      </div>
+			      
+			     			        
+			      <div class="row">
+				        <div class="col-xs-8">
+				          <div class="checkbox icheck " style="margin-left:9.5%;">
+				            <label>
+				              <input type="checkbox"> Remember Me
+				            </label>
+				          </div>
+				        </div>
+				        
+				        <!-- /.col -->
+				        <div class="col-xs-4">
+				          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+				        </div>
+				        <!-- /.col -->
+			      </div>
     </form>
 
    

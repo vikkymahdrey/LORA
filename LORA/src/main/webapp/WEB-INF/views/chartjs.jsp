@@ -327,7 +327,7 @@
 			</ul>
         </li>
 		 <li class="treeview">
-          <a href="#">
+          <a href="logout">
             <i class="fa fa-sign-out"></i> <span><b>Sign-Out</b></span>
            
           </a>

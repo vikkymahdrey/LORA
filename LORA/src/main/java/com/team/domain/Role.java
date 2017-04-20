@@ -17,7 +17,7 @@ public class Role implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private String id;
 
 	private String description;
 
@@ -25,18 +25,18 @@ public class Role implements Serializable {
 
 	private String type;
 
-	//bi-directional many-to-one association to AdminUser
+	//bi-directional many-to-one association to User
 	@OneToMany(mappedBy="role")
-	private List<AdminUser> adminUsers;
+	private List<User> users;
 
 	public Role() {
 	}
 
-	public int getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -64,26 +64,26 @@ public class Role implements Serializable {
 		this.type = type;
 	}
 
-	public List<AdminUser> getAdminUsers() {
-		return this.adminUsers;
+	public List<User> getUsers() {
+		return this.users;
 	}
 
-	public void setAdminUsers(List<AdminUser> adminUsers) {
-		this.adminUsers = adminUsers;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
-	public AdminUser addAdminUser(AdminUser adminUser) {
-		getAdminUsers().add(adminUser);
-		adminUser.setRole(this);
+	public User addUser(User user) {
+		getUsers().add(user);
+		user.setRole(this);
 
-		return adminUser;
+		return user;
 	}
 
-	public AdminUser removeAdminUser(AdminUser adminUser) {
-		getAdminUsers().remove(adminUser);
-		adminUser.setRole(null);
+	public User removeUser(User user) {
+		getUsers().remove(user);
+		user.setRole(null);
 
-		return adminUser;
+		return user;
 	}
 
 }

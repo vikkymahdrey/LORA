@@ -5,13 +5,14 @@
 	version="2.0">
 	<persistence-unit name="projectPU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<non-jta-data-source>java:comp/env/jdbc/projectDB</non-jta-data-source> 
-		<class>com.team.domain.AdminUser</class>
-		<class>com.team.domain.Allergy</class>
-		<class>com.team.domain.Medication</class>
+		<non-jta-data-source>java:comp/env/jdbc/projectDB</non-jta-data-source>
+		<class>com.team.domain.Area</class>
+		<class>com.team.domain.Branch</class>
+		<class>com.team.domain.Device</class>
+		<class>com.team.domain.Place</class>
 		<class>com.team.domain.Role</class>
-		<class>com.team.domain.Info</class>
-		<class>com.team.domain.Rowindex</class>
+		<class>com.team.domain.Site</class>
+		<class>com.team.domain.User</class>
 		<class>com.team.domain.Waterconsumption</class>
 		
 

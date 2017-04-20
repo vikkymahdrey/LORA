@@ -1,17 +1,17 @@
 package com.team.service;
 
-import com.team.domain.AdminUser;
+import com.team.domain.User;
 
 public interface LoginService {
 
-	AdminUser getLoginUser(String username, String password) throws Exception;
+	User getLoginUser(String username, String password) throws Exception;
 
-	AdminUser getUserByEmail(String email) throws Exception;
+	User getUserByEmail(String email) throws Exception;
 
-	String getPasswordResetMessage(AdminUser admin)throws Exception;
+	String getPasswordResetMessage(User user)throws Exception;
 
-	AdminUser setGeneratedPwd(AdminUser adminUser)throws Exception;
+	/*AdminUser setGeneratedPwd(AdminUser adminUser)throws Exception;*/
 
-	AdminUser getUserById(String id)throws Exception;
+	User getUserById(String id)throws Exception;
 
 }
