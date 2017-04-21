@@ -337,7 +337,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../../dist/img/user_icon.png" class="img-circle" alt="User Image">
+          <img src="images/user_icon.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Unizen Technologies</p>
