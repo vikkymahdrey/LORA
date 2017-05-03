@@ -1,9 +1,12 @@
+<%@page import="com.team.domain.*"%>
+<%@page import="java.util.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLORA||Dashboard</title>
+  <title>Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -16,6 +19,7 @@
   <link rel="stylesheet" href="css/jvectormap/jquery-jvectormap-1.2.2.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="css/AdminLTE.min.css">
+   
   
  
   
@@ -31,6 +35,7 @@
   <![endif]-->
   <script src="js/scroller.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   
 	  <!-- jQuery 2.2.3 -->
 	<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -53,7 +58,7 @@
 	<script src="js/pages/dashboard2.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="js/demo.js"></script>
-  
+
 </head>
 <style>
 	#goTop{
@@ -66,7 +71,9 @@
 	}
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
-	
+		<%User user=(User)request.getSession().getAttribute("user"); %>
+
+	<input type="hidden" id="dashVal" value="0"/>
 <a  id="goTop"><i class="fa fa-eject"></i></a>
 <div class="wrapper">
 
@@ -78,7 +85,7 @@
       <span class="logo-mini"><b>A
 	  </b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LORA</span>
+      <span class="logo-lg"><b><%=user.getSite().getSiteName()%></b></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -101,10 +108,11 @@
       <div class="user-panel">
          
         <div class="pull-left image">
-			 <img src="images/user_icon.png" class="img-circle" alt="User Image">
+			<img src="images/user_icon.png" class="img-circle" alt="User Image">
+			 
         </div>
-        <div class="pull-left info">
-          <p><a  href="#"><span class="glyphicon glyphicon-success"></span><b> Welcome Unizen</b></a>&nbsp;</p>
+        <div >
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  href="#"><span class="fa fa-circle text-success"></span><b> Welcome <%=user.getDisplayname() %></b></a>&nbsp;</p>
 			
         </div>
       </div>
@@ -127,7 +135,23 @@
             <i class="fa fa-dashboard"></i> <span><b>Dashboard</b></span>
           </a>
         </li>
-      
+        
+      <li class="treeview">
+          <a href="#">
+            <i class="fa fa-home"></i>
+            <span><b>MyFlats</b></span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+         	 
+         	<li><a href="#"><i class="fa fa-circle-o"></i> <b>Kitchen</b></a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> <b>Bathroom1</b></a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> <b>Bathroom2</b></a></li>
+           
+          </ul>
+        </li>
        
         <li class="treeview">
           <a href="#">
@@ -138,6 +162,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
+         	<li><a href="chartsMap"><i class="fa fa-circle-o"></i> <b>Charts-Map</b></a></li>
             <li><a href="barChart"><i class="fa fa-circle-o"></i> <b>Bar-Pi</b></a></li>
             <li><a href="flotChart"><i class="fa fa-circle-o"></i> <b>Flot</b></a></li>
             <li><a href="inlineChart"><i class="fa fa-circle-o"></i> <b>Inline</b></a></li>
@@ -166,204 +191,111 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-       
-	  <h3 class="text-center text-blue"><b>
-        Dashboard
-        </b>
-	  </h3>
-	
-		
-	</section>
+  
+  <div class="content-wrapper" >
+  		<section class="content" >
+		 	<div class="content-wrap" >
+		 	
+  				<div class="box box-primary">
+  						<div class="row">
+							<div class="col-sm-12">	
+							       <h4 class="text-center text-black">
+							         <b>My Information</b>
+							       </h4>
+							</div>
+						</div>	
+						
+						<div class="row">
+							<div class="col-sm-6">
+						          <!-- Info Boxes Style 2 -->
+						          <div class="info-box bg-yellow">
+						            <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+						
+						            <div class="info-box-content">
+						              <span class="info-box-text">Inventory</span>
+						              <span class="info-box-number">5,200</span>
+						
+						              <div class="progress">
+						                <div class="progress-bar" style="width: 50%"></div>
+						              </div>
+						                  <span class="progress-description">
+						                    50% Increase in 30 Days
+						                  </span>
+						            </div>
+						            <!-- /.info-box-content -->
+						          </div>
+						          <!-- /.info-box -->
+						          
+						          <div class="info-box bg-green">
+						            <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+						
+						            <div class="info-box-content">
+						              <span class="info-box-text">Mentions</span>
+						              <span class="info-box-number">92,050</span>
+						
+						              <div class="progress">
+						                <div class="progress-bar" style="width: 20%"></div>
+						              </div>
+						                  <span class="progress-description">
+						                    20% Increase in 30 Days
+						                  </span>
+						            </div>
+						            <!-- /.info-box-content -->
+						          </div>
+						          <!-- /.info-box -->
+          <div class="info-box bg-red">
+            <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
 
-    <!-- Main content -->
-    <section class="content">
-      <!-- Info boxes -->
-      
-      <!-- /.row -->
-       					<div class="list-group text-center">
-						   <button class=" btn btn-sm btn-primary select-box"><b>Rajhasthan &nbsp;<span class="caret"></b></span></button>
-						   <button class=" btn btn-sm btn-primary"><b>Gandhinagar &nbsp;<span class="caret"></b></span></button>
-						   <button class=" btn btn-sm btn-primary"><b>Building 1 &nbsp;<span class="caret"></b></span></button>
-						   <button id="datepicker" class=" btn btn-sm btn-primary"><b>FromDate &nbsp;<span class="caret"></b></span></button>
-						   <button class=" btn btn-sm btn-primary "><b>ToDate &nbsp;<span class="caret"></b></span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						   <button class=" btn btn-sm btn-primary text-black"><b>Submit &nbsp;</b></span></button>
-			  	  		</div>
+            <div class="info-box-content">
+              <span class="info-box-text">Downloads</span>
+              <span class="info-box-number">114,381</span>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="box">
-            <div class="box-header with-border">
-				<h3 class="box-title"><b>Water Consumption graph</b></h3>
-
-				<div class="box-tools pull-right">
-					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-					</button>
-					<button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-				</div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <p class="text-left">
-                    <strong>Water consumption in Litres</strong>
-                  </p>
-				   
-
-                  <div class="chart">
-                    <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px;"></canvas>
-					<p class="text-right">
-                    <strong>Date</strong>
-					</p>
-                  </div>
-                  <!-- /.chart-responsive -->
-                </div>
-                <!-- /.col -->
-                
-                <!-- /.col -->
+              <div class="progress">
+                <div class="progress-bar" style="width: 70%"></div>
               </div>
-              <!-- /.row -->
+                  <span class="progress-description">
+                    70% Increase in 30 Days
+                  </span>
             </div>
-            <!-- ./box-body -->
-            
-            <!-- /.box-footer -->
+            <!-- /.info-box-content -->
           </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-      <!-- Main row -->
-      <div class="row">
-        <!-- Left col -->
-        <div class="col-md-8">
-          <!-- MAP & BOX PANE -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title"><b>Water Reservoirs</b></h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <div class="row">
-                <div class="col-md-9 col-sm-8">
-                  <div class="pad">
-                    <!-- Map will be created here -->
-                    <div id="world-map-markers" style="height: 325px;"></div>
-                  </div>
-                </div>
-                <!-- /.col -->
-         
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-          <div class="row">
-            <div class="col-md-6">
-              <!-- DIRECT CHAT -->
-              
-              <!--/.direct-chat -->
-            </div>
-            <!-- /.col -->
-
-            <div class="col-md-6">
-              <!-- USERS LIST -->
-             
-              <!--/.box -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-
-         
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-
-        <div class="col-md-4">
-          <!-- Info Boxes Style 2 -->
-          
           <!-- /.info-box -->
-         
-          <!-- /.info-box -->
-      
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Direct Messages</span>
+              <span class="info-box-number">163,921</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 40%"></div>
+              </div>
+                  <span class="progress-description">
+                    40% Increase in 30 Days
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
           <!-- /.info-box -->
 
-          <div class="box box-default">
-            <div class="box-header with-border">
-              <h3 class="box-title"><b>Regional Usage</b></h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="chart-responsive">
-                    <canvas id="pieChart" height="150"></canvas>
-                  </div>
-                  <!-- ./chart-responsive -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-6">
-                  <ul class="chart-legend clearfix">
-                    <li><i class="fa fa-circle-o text-red"></i> Gandhinagar Campus</li>
-                    <li><i class="fa fa-circle-o text-green"></i>BSNL office</li>
-                    <li><i class="fa fa-circle-o text-yellow"></i>Bajaj Colony</li>
-                    <li><i class="fa fa-circle-o text-aqua"></i> Gandhinagar Bus Stand </li>
-                   
-                  </ul>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- /.box-body -->
-   
-          </div>
-          <!-- /.box -->
-
-          <!-- PRODUCT LIST -->
          
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
+							
+				 </div> 
+			</div> 
+			 
+			</div>
+		</div>
+			
+		</section>	
+	<!-- /.section content  -->
+   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer text-center">
-	<strong >Copyright &copy; 2014-2016 <a href="http://www.unizentechnologies.com/">Unizen Technologies</a>.</strong> All rights
-		reserved.
-  </footer>
-
-  <!-- Control Sidebar -->
- 
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  
+		  <footer class="main-footer text-center">
+			<strong >Copyright &copy; 2014-2016 <a href="http://www.unizentechnologies.com/">Unizen Technologies</a>.</strong> All rights
+				reserved.
+		  </footer>
+	  
 
 </div>
 <!-- ./wrapper -->

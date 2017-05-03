@@ -47,6 +47,11 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user")
 	private List<Device> devices;
 
+	//bi-directional many-to-one association to Site
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="siteId")
+	private Site site;
+
 	//bi-directional many-to-one association to Role
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="roleId")
@@ -171,6 +176,14 @@ public class User implements Serializable {
 		device.setUser(null);
 
 		return device;
+	}
+
+	public Site getSite() {
+		return this.site;
+	}
+
+	public void setSite(Site site) {
+		this.site = site;
 	}
 
 	public Role getRole() {

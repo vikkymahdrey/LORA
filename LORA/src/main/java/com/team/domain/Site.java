@@ -1,9 +1,7 @@
 package com.team.domain;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.util.List;
 
 
@@ -12,7 +10,6 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="site")
 @NamedQuery(name="Site.findAll", query="SELECT s FROM Site s")
 public class Site implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -32,6 +29,10 @@ public class Site implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="branchId")
 	private Branch branch;
+
+	//bi-directional many-to-one association to User
+	@OneToMany(mappedBy="site")
+	private List<User> users;
 
 	//bi-directional many-to-one association to Waterconsumption
 	@OneToMany(mappedBy="site")
@@ -84,6 +85,28 @@ public class Site implements Serializable {
 
 	public void setBranch(Branch branch) {
 		this.branch = branch;
+	}
+
+	public List<User> getUsers() {
+		return this.users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public User addUser(User user) {
+		getUsers().add(user);
+		user.setSite(this);
+
+		return user;
+	}
+
+	public User removeUser(User user) {
+		getUsers().remove(user);
+		user.setSite(null);
+
+		return user;
 	}
 
 	public List<Waterconsumption> getWaterconsumptions() {

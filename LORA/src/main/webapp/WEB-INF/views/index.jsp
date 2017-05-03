@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin | Log in</title>
+  <title>Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -121,7 +121,7 @@ function validate() {
 
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Admin</b>Portal</a>
+    <h3><b>Water </b>Flowmeter</h3>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

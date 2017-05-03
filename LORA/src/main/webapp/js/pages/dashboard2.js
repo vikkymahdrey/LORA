@@ -1,6 +1,7 @@
 $(function () {
 
   'use strict';
+ 
 
   /* ChartJS
    * -------
@@ -12,12 +13,52 @@ $(function () {
   //-----------------------
 
   // Get context with jQuery - using jQuery's .get() method.
+  
+  // Ajax calling for get reload dashboard values..
+  var jsondata=[{"id":"1","site":"site1","endtime":"12:30:00","area":"Koramangala 1st Block","starttime":"09:30:00","branch":"Bangalore","place":"Bajaj Allianz life insurance","date":"2017-04-15","long":77.6358834,"deviceId":"flow meter 1","waterUnits":"90","lat":12.9248123},{"id":"3","site":"site1","endtime":"09:30:00","area":"Koramangala 1st Block","starttime":"02:30:00","branch":"Bangalore","place":"Sri Kateramma Temple","date":"2017-04-16","long":77.6366867,"deviceId":"flow meter 1","waterUnits":"300","lat":12.9250136},{"id":"4","site":"site2","endtime":"22:45:00","area":"Koramangala 5th Block","starttime":"21:30:00","branch":"Bangalore","place":"Apollo Spectra hospitals","date":"2017-04-17","long":77.6171335,"deviceId":"flow meter 2","waterUnits":"250","lat":12.93550188},{"id":"5","site":"site2","endtime":"08:00:00","area":"Koramangala 5th Block","starttime":"11:00:00","branch":"Bangalore","place":"ACURA Speciality hospital","date":"2017-04-18","long":77.6171335,"deviceId":"flow meter 2","waterUnits":"400","lat":12.9350188}];  
+  var jsondate=[];
+  var waterunits=[];
+  var mark=[];
+  
+$.ajax({
+		type : "GET",
+		url : "dashboard",
+		cache: false	
+		}).done(function(result) {
+			var jsondata= result;
+			//alert(jsondata);
+			/*alert(jsondata[0].date);
+			for (i = 0; i < jsondata.length; i++) {
+				  jsondate.push(jsondata[i].date); 
+				  waterunits.push(jsondata[i].waterUnits);
+            }*/
+			
+		});
+
+ if(jsondata.length>0){
+	 for(var i=0;i<jsondata.length;i++){
+	  	  jsondate.push(jsondata[i].date); 
+	  	  waterunits.push(jsondata[i].waterUnits);
+	  	  
+	  	  var arr=[];
+	  	  arr.push(jsondata[i].lat);
+	  	  arr.push(jsondata[i].long);
+	  	  
+	  	  var json = {};
+	  	  json['latLng'] = arr;
+	  	  json['name'] = jsondata[i].site+","+jsondata[i].area+","+jsondata[i].place;
+	  	    	  mark.push(json);
+	  	  
+	  }
+}
+
+  
   var salesChartCanvas = $("#salesChart").get(0).getContext("2d");
   // This will get the first returned node in the jQuery collection.
   var salesChart = new Chart(salesChartCanvas);
 
   var salesChartData = {
-    labels: ["12.04.2017", "13.04.2017", "14.04.2017", "15.04.2017", "16.04.2017", "17.04.2017", "18.04.2017"],
+    labels:jsondate,
     datasets: [
 	  {
         label: "Water Consumption in litres",
@@ -28,7 +69,7 @@ $(function () {
         pointStrokeColor: "rgba(60,141,188,1)",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(60,141,188,1)",
-        data: [128, 148, 140, 119, 186, 127, 190]
+        data: waterunits
       }
     ]
   };
@@ -176,16 +217,12 @@ $(function () {
     },
     markerStyle: {
       initial: {
-		zoomMin: 3,
+		zoomMin: 30,
         fill: '#00a65a',
         stroke: '#111'
       }
     },
-    markers: [
-      {latLng: [27.0238, 74.2179], name: 'Rajhasthan'},
-		  {latLng:[27.609411, 75.1399],name: 'Rajhasthan Gandhinagar Campus'}
-      
-    ]
+    markers: mark
   });
 
   /* SPARKLINE CHARTS

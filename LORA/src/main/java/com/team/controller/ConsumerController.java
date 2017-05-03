@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -119,6 +121,47 @@ public class ConsumerController {
 		}
 					
 		return returnVal;
+	
+	}
+	
+	
+	
+/* Ajax calling for onload() dashboard /dashboard */
+	
+	@RequestMapping(value= {"/dashboard"}, method=RequestMethod.GET)
+	public @ResponseBody String onLoadDashboardHandler(HttpServletRequest request,Map<String,Object> map) throws Exception  {
+		logger.debug("/*Ajax getting onload dashboard */");
+		
+		
+		JSONArray jsonarr=new JSONArray();
+		
+		try{
+			List<Waterconsumption> waterConsumedList=consumerService.getWaterConsumed();
+			if(waterConsumedList!=null && !waterConsumedList.isEmpty()){
+				for(Waterconsumption wc : waterConsumedList){
+					JSONObject json=new JSONObject();
+						json.put("id", wc.getId());
+						json.put("branch",wc.getSite().getBranch().getLocation());
+						json.put("site",wc.getSite().getSiteName());
+						json.put("area", wc.getPlace().getArea().getAreaName());
+						json.put("place", wc.getPlace().getPlaceName());
+						json.put("deviceId", wc.getDevice().getHwSerialNo());
+						json.put("starttime", wc.getStartTime());
+						json.put("endtime", wc.getEndTime());
+						json.put("date", wc.getDate());
+						json.put("waterUnits", wc.getWaterconsumed());
+						json.put("lat", wc.getPlace().getLatitude());
+						json.put("long", wc.getPlace().getLongitude());
+					
+					    jsonarr.put(json);
+				
+				}
+			}
+		}catch(Exception e){
+			logger.error("Error in Ajax/getPlace",e);
+		}
+					
+		return jsonarr.toString();
 	
 	}
 	

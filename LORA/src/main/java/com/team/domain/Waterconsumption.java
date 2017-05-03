@@ -1,9 +1,7 @@
 package com.team.domain;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.sql.Time;
 import java.util.Date;
 
@@ -13,7 +11,6 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="waterconsumption")
 @NamedQuery(name="Waterconsumption.findAll", query="SELECT w FROM Waterconsumption w")
 public class Waterconsumption implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -43,11 +40,6 @@ public class Waterconsumption implements Serializable {
 
 	private String waterconsumed;
 
-	//bi-directional many-to-one association to Site
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="siteId")
-	private Site site;
-
 	//bi-directional many-to-one association to Device
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="deviceId")
@@ -57,6 +49,11 @@ public class Waterconsumption implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="placeId")
 	private Place place;
+
+	//bi-directional many-to-one association to Site
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="siteId")
+	private Site site;
 
 	public Waterconsumption() {
 	}
@@ -133,14 +130,6 @@ public class Waterconsumption implements Serializable {
 		this.waterconsumed = waterconsumed;
 	}
 
-	public Site getSite() {
-		return this.site;
-	}
-
-	public void setSite(Site site) {
-		this.site = site;
-	}
-
 	public Device getDevice() {
 		return this.device;
 	}
@@ -155,6 +144,14 @@ public class Waterconsumption implements Serializable {
 
 	public void setPlace(Place place) {
 		this.place = place;
+	}
+
+	public Site getSite() {
+		return this.site;
+	}
+
+	public void setSite(Site site) {
+		this.site = site;
 	}
 
 }

@@ -56,6 +56,11 @@ public class LoginController {
 		return "flot";
 	}
 	
+	@RequestMapping(value= {"/chartsMap"})
+	public String chartsMapHandler(){
+		return "chartmap";
+	}
+	
 	@RequestMapping(value= {"/inlineChart"})
 	public String inLineCharthandler(){
 		return "inline";
@@ -90,6 +95,7 @@ public class LoginController {
         if(user!=null){
         	
         	session.setAttribute("user", user);
+        	session.setAttribute("site", user.getSite());
         	
         	if (user.getPwdChangedDate()== null || user.getPwdChangedDate().equals("")) {
 						needToChangePwd = true;
