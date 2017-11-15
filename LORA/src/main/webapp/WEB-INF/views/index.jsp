@@ -121,7 +121,7 @@ function validate() {
 
 <div class="login-box">
   <div class="login-logo">
-    <h3><b>Water </b>Flowmeter</h3>
+    <h3><b>Quote</b>willers</h3>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
